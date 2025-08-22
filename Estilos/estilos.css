@@ -1,0 +1,97 @@
+
+@font-face {
+  font-family: stardew;
+  src: url(Fuentes/StardewValley.ttf);
+}
+
+body {
+  width:100vw;
+  height: 100vh;
+  background-image: url(img/cielo.avif);
+  color: cornsilk;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+#game .celda{
+    width: 90px;
+    height: 90px;
+    font-size: 5rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid #844120;
+    float: left;
+    background: linear-gradient(0deg, rgba(203, 129, 64, 1) 0%, rgba(243, 190, 122, 1) 100%);
+    font-family: 'stardew','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #844120;
+    border-radius: 5px;
+    transition: transform 0.2s ease, background 0.3s ease;
+    cursor: pointer;
+    
+}
+
+#game .celda:hover {
+    transform: scale(1.1);
+    background: linear-gradient(0deg, rgba(243, 190, 122, 1) 0%, rgba(255, 220, 180, 1) 100%);
+}
+
+#game {
+    background-image: url(img/heart\ board.JPG);
+    width: 276px;
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+
+#restartBtn, #btnRes {
+    font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;
+    background-color: #f3be7a;
+    border: 3px solid #ab6429;
+    height: 40px;
+    font-size: larger;
+    margin: 10px;
+    padding: 5px 15px;
+    color: #491f04;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#restartBtn:hover, #btnRes:hover {
+    background-color: #ffd27f;
+    transform: scale(1.05);}
+
+.puntaje {
+    font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;
+    background-color: #f3be7a;
+    border: 3px groove #ab6429;
+    color: #491f04;
+    font-size: larger;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    margin: 20px auto;   
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+
+.game-container {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;     
+  gap: 10px;
+}
+
+.buttons {
+  width: 276px;            
+  display: flex;
+  justify-content: space-between; 
+}
