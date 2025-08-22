@@ -50,6 +50,14 @@ body {
     padding: 5px;
     
 }
+.win {
+    animation: winFlash 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes winFlash {
+    from { background: #ffd27f; transform: scale(1.05); }
+    to { background: #fff0c1; transform: scale(1); }
+}
 
 #restartBtn, #btnRes {
     font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;

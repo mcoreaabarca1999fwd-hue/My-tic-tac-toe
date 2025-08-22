@@ -4,6 +4,9 @@ const casillas = Array.from({ length: 9 }, (_, i) => document.getElementById(`ca
 const restartBtn = document.getElementById('restartBtn');
 const btnRes = document.getElementById('btnRes');
 
+//Texto de estado
+const statusText = document.getElementById('statusText')
+
 //Movimientos
 let movimientosTablero = 0;
 
@@ -16,6 +19,9 @@ let contadorO = parseInt(localStorage.getItem('marcadorO')) || 0;
 vicsX.textContent = "Jugador: " + contadorX;
 vicsO.textContent = "Bot: " + contadorO;
 
+statusText.textContent = "Turno del Jugador (=)";
+
+
 // --- Funciones ---
 
 // Movimientos jugador
@@ -26,6 +32,7 @@ const movimientos = () => {
                 casilla.innerText = '=';
                 movimientosTablero++;
                 if (!validaGanador()) {
+                    statusText.textContent = "Turno del Bot (@)";
                     setTimeout(movCirculo, 500); // máquina responde después de 0.5s
                 }
             }
@@ -45,6 +52,7 @@ const movCirculo = () => {
 
     casillasVacias[maquina].innerText = '@';
     validaGanador();
+    statusText.textContent = "Turno del Jugador (=)";
 };
 
 // Validación del ganador
@@ -64,15 +72,14 @@ const validaGanador = () => {
         ) {
             alguienGano = true;
             bloquearTablero();
-            setTimeout(() => {
-                alert(`${casillas[pos1].textContent === '=' ? "Jugador" : "Bot"} gana 🎉`);
-            }, 100);
 
             if (casillas[pos1].textContent === '=') {
+                statusText.textContent = "🎉 ¡Jugador gana!";
                 contadorX++;
                 localStorage.setItem('marcadorX', contadorX);
                 vicsX.textContent = "Jugador: " + contadorX;
             } else {
+                statusText.textContent = "🤖 ¡Bot gana!";
                 contadorO++;
                 localStorage.setItem('marcadorO', contadorO);
                 vicsO.textContent = "Bot: " + contadorO;
@@ -83,9 +90,9 @@ const validaGanador = () => {
 
     // Empate
     if (movimientosTablero >= 9 && !alguienGano) {
+        statusText.textContent = "🤝 Empate";
         bloquearTablero();
         setTimeout(() => {
-            alert('Empate 🤝');
         }, 100);
         return true;
     }
@@ -115,6 +122,7 @@ restartBtn.addEventListener('click', () => {
     localStorage.setItem('marcadorO', contadorO);
     movimientosTablero = 0;
     desbloquearTablero();
+    statusText.textContent = "Turno del Jugador (=)";
 });
 
 // Reiniciar solo tablero
@@ -122,4 +130,5 @@ btnRes.addEventListener('click', () => {
     casillas.forEach(casilla => casilla.innerText = '');
     movimientosTablero = 0;
     desbloquearTablero();
+    statusText.textContent = "Turno del Jugador (=)";
 });
