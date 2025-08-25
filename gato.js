@@ -7,6 +7,28 @@ const btnRes = document.getElementById('btnRes');
 //Texto de estado
 const statusText = document.getElementById('statusText')
 
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+// Iniciar música en pausa
+bgMusic.volume = 0.5; // volumen (0 = silencio, 1 = máximo)
+
+musicBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "🎵";
+    } else {
+        bgMusic.pause();
+        musicBtn.textContent = "⏸️";
+    }
+});
+
+window.addEventListener('load', () => {
+    bgMusic.play().catch(() => {
+        console.log("El navegador bloqueó autoplay hasta que el usuario haga click.");
+    });
+});
+
 //Movimientos
 let movimientosTablero = 0;
 
@@ -51,8 +73,9 @@ const movCirculo = () => {
     movimientosTablero++;
 
     casillasVacias[maquina].innerText = '@';
-    validaGanador();
-    statusText.textContent = "Turno del Jugador (=)";
+    if (!validaGanador()) {
+        statusText.textContent = "Turno del Jugador (=)";
+    }
 };
 
 // Validación del ganador
@@ -79,7 +102,7 @@ const validaGanador = () => {
                 localStorage.setItem('marcadorX', contadorX);
                 vicsX.textContent = "Jugador: " + contadorX;
             } else {
-                statusText.textContent = "🤖 ¡Bot gana!";
+                statusText.textContent = "👾 ¡Bot gana!";
                 contadorO++;
                 localStorage.setItem('marcadorO', contadorO);
                 vicsO.textContent = "Bot: " + contadorO;
@@ -90,7 +113,7 @@ const validaGanador = () => {
 
     // Empate
     if (movimientosTablero >= 9 && !alguienGano) {
-        statusText.textContent = "🤝 Empate";
+        statusText.textContent = "🫶🏼​ Empate";
         bloquearTablero();
         setTimeout(() => {
         }, 100);

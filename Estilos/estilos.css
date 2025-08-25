@@ -64,7 +64,7 @@ body {
     background-color: #f3be7a;
     border: 3px solid #ab6429;
     height: 40px;
-    font-size: larger;
+    font-size: 15px;
     margin: 10px;
     padding: 5px 15px;
     color: #491f04;
@@ -74,7 +74,10 @@ body {
 
 #restartBtn:hover, #btnRes:hover {
     background-color: #ffd27f;
-    transform: scale(1.05);}
+    transform: scale(1.05);
+    font-size: medium;
+    
+  }
 
 .puntaje {
     font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;
@@ -102,4 +105,23 @@ body {
   width: 276px;            
   display: flex;
   justify-content: space-between; 
+}
+
+#musicBtn {
+  font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;
+  background-color: #f3be7a;
+  border-color: #ab6429;
+  border-width: 3px;
+  height: 40px;
+  font-size: larger;
+  margin: 10px;
+  color: #491f04;
+  border-radius: 3px 3px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#musicBtn:hover {
+  background-color: #f9d9a7;
+  transform: scale(1.05);
 }
