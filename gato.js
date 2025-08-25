@@ -101,11 +101,15 @@ const validaGanador = () => {
                 contadorX++;
                 localStorage.setItem('marcadorX', contadorX);
                 vicsX.textContent = "Jugador: " + contadorX;
+
+                [casillas[pos1], casillas[pos2], casillas[pos3]].forEach(c => c.classList.add("win"));
             } else {
                 statusText.textContent = "👾 ¡Bot gana!";
                 contadorO++;
                 localStorage.setItem('marcadorO', contadorO);
                 vicsO.textContent = "Bot: " + contadorO;
+
+                [casillas[pos1], casillas[pos2], casillas[pos3]].forEach(c => c.classList.add("win"));
             }
             return true;
         }
@@ -146,6 +150,10 @@ restartBtn.addEventListener('click', () => {
     movimientosTablero = 0;
     desbloquearTablero();
     statusText.textContent = "Turno del Jugador (=)";
+    casillas.forEach(casilla => {
+    casilla.innerText = '';
+    casilla.classList.remove("win"); // 👈 quitar animación
+});
 });
 
 // Reiniciar solo tablero
@@ -154,4 +162,8 @@ btnRes.addEventListener('click', () => {
     movimientosTablero = 0;
     desbloquearTablero();
     statusText.textContent = "Turno del Jugador (=)";
+    casillas.forEach(casilla => {
+    casilla.innerText = '';
+    casilla.classList.remove("win"); // 👈 quitar animación
+});
 });

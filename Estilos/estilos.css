@@ -1,3 +1,13 @@
+@keyframes winFlash {
+  0% { background-color: #fff3b0; }
+  50% { background-color: #ffd93d; }
+  100% { background-color: #fff3b0; }
+}
+
+.win {
+  animation: winFlash 1s infinite;
+  border-radius: 5px;
+} 
 
 @font-face {
   font-family: stardew;
@@ -70,6 +80,7 @@ body {
     color: #491f04;
     border-radius: 5px;
     transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
 #restartBtn:hover, #btnRes:hover {
@@ -111,6 +122,7 @@ body {
   font-family: 'stardew', Georgia, 'Times New Roman', Times, serif;
   background-color: #f3be7a;
   border-color: #ab6429;
+  border: 3px solid #ab6429;
   border-width: 3px;
   height: 40px;
   font-size: larger;
@@ -118,7 +130,7 @@ body {
   color: #491f04;
   border-radius: 3px 3px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #musicBtn:hover {
