@@ -54,9 +54,11 @@ const movimientos = () => {
                 casilla.innerText = '=';
                 movimientosTablero++;
                 if (!validaGanador()) {
-                    statusText.textContent = "Turno del Bot (@)";
-                    setTimeout(movCirculo, 500); // máquina responde después de 0.5s
-                }
+                statusText.textContent = "Turno del Bot (@)";
+                bloquearTablero()
+                setTimeout(movCirculo, 500); // máquina responde después de 0.5s
+                
+                } 
             }
         });
     });
@@ -65,6 +67,7 @@ movimientos();
 
 // Movimiento Bot (aleatorio)
 const movCirculo = () => {
+    desbloquearTablero()
     const casillasVacias = casillas.filter((vacia) => vacia.textContent === '');
     if (casillasVacias.length === 0) return;
 
@@ -147,23 +150,25 @@ restartBtn.addEventListener('click', () => {
     vicsO.textContent = "Bot: " + contadorO;
     localStorage.setItem('marcadorX', contadorX);
     localStorage.setItem('marcadorO', contadorO);
+     casillas.forEach(casilla => {
+    casilla.innerText = '';
+    casilla.classList.remove("win"); // 👈 quitar animación//
+});
     movimientosTablero = 0;
     desbloquearTablero();
     statusText.textContent = "Turno del Jugador (=)";
-    casillas.forEach(casilla => {
-    casilla.innerText = '';
-    casilla.classList.remove("win"); // 👈 quitar animación
-});
+   
 });
 
 // Reiniciar solo tablero
 btnRes.addEventListener('click', () => {
     casillas.forEach(casilla => casilla.innerText = '');
-    movimientosTablero = 0;
-    desbloquearTablero();
-    statusText.textContent = "Turno del Jugador (=)";
     casillas.forEach(casilla => {
     casilla.innerText = '';
     casilla.classList.remove("win"); // 👈 quitar animación
 });
+    movimientosTablero = 0;
+    desbloquearTablero();
+    statusText.textContent = "Turno del Jugador (=)";
+   
 });
